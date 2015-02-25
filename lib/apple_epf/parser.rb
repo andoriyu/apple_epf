@@ -27,7 +27,7 @@ module AppleEpf
       count = 0
       pos = 0
       opts = { limit: nil, pos: 0}.merge(opts)
-      File.open(@filename) do |file|
+      File.open(@filename, 'r', encoding: 'UTF-8') do |file|
         file.pos = opts[:pos]
         file.each_line(RECORD_SEPARATOR) do |line|
           unless line[0].chr == COMMENT_CHAR
